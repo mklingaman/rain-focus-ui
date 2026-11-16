@@ -5,7 +5,9 @@
   --text: #{$body-color};
   --text-secondary: #{$body-secondary-color};
   --header: #{$header-color};
+  --neutral-bg: #{$neutral-bg};
   --bg: #{$bg};
+  --input-bg: #{$input-bg};
   --border: #{$border};
   --accent: #{$accent};
   --accent-bg: #{$accent-bg};
@@ -143,11 +145,33 @@ h6 {
   color: var(--text);
 }
 
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+
+  &:focus-within {
+    outline: 2px solid var(--accent);
+  }
+}
+
+input {
+  background-color: var(--input-bg);
+  border: none;
+  color: var(--text);
+  outline: none;
+}
+
 .card {
   position: relative;
   padding: 1.5rem 2rem;
   border-radius: 0.25rem;
   border: 1px solid var(--border);
+  min-height: 7.5rem;
 }
 
 .card-link {
@@ -191,6 +215,8 @@ h6 {
   background-color: transparent;
   width: 100%;
   text-align: left;
+  min-height: 2.5rem;
+  min-width: 11.5rem;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 700;
@@ -236,7 +262,7 @@ h6 {
 }
 
 .container {
-  max-width: 90rem;
+  max-width: 1020rem;
   margin-left: auto;
   margin-right: auto;
 }

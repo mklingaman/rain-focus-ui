@@ -7,6 +7,7 @@ import addCircleIcon from "./assets/add-circle.svg";
 import arrowRightIcon from "./assets/arrow.svg";
 import computerIcon from "./assets/computer.svg";
 import personIcon from "./assets/person.svg";
+import searchIcon from "./assets/search.png";
 
 import "./App.scss";
 import { Typography } from "./components/Typography";
@@ -15,34 +16,45 @@ import { Button } from "./components/Button";
 
 function App() {
   return (
-    <div className="layout container padding-default">
+    <div className="layout container">
       <div className="aside">
-        <section className="base-8">
-          <div>
-            <img
-              src={rainFocusLogo}
-              width="32"
-              height="32"
-              alt="Rain Focus Logo"
-            />
+        <section className="aside-intro padding-default">
+          <div className="base-16">
+            <div>
+              <img
+                src={rainFocusLogo}
+                width="32"
+                height="32"
+                alt="Rain Focus Logo"
+              />
+            </div>
+            <div>
+              <img src={summitLogo} width="32" height="32" alt="Summit Logo" />
+            </div>
           </div>
-          <div>
-            <img src={summitLogo} width="32" height="32" alt="Summit Logo" />
+
+          <div className="user-initials">
+            <Typography styleOf="body-xsmall">FL</Typography>
           </div>
         </section>
 
-        <div className="base-16">
-          <Typography as="h2" styleOf="headline-four">
-            RainFocus Summit
-          </Typography>
-          <Typography styleOf="body-xsmall">
-            Lehi, UT • December 15th
-          </Typography>
+        <section className="aside-nav base-16">
+          <div className="aside-header base-16">
+            <Typography as="h2" styleOf="headline-four">
+              RainFocus Summit
+            </Typography>
+            <Typography styleOf="body-xsmall">
+              Lehi, UT • December 15th
+            </Typography>
 
-          <label htmlFor="search" className="visually-hidden">
-            Search
-          </label>
-          <input id="search" type="text" placeholder="Search" />
+            <div className="input-wrapper">
+              <label htmlFor="search" className="visually-hidden">
+                Search
+              </label>
+              <img src={searchIcon} alt="Search" />
+              <input id="search" type="text" placeholder="Search" />
+            </div>
+          </div>
 
           <nav>
             <Accordion.Root className="accordion">
@@ -94,11 +106,11 @@ function App() {
               </Accordion.Item>
             </Accordion.Root>
           </nav>
-        </div>
+        </section>
       </div>
 
-      <div className="content base-32">
-        <header className="flex">
+      <div className="content base-32 padding-default">
+        <header className="event-header">
           <img src={summitLogoLarge} width="95" height="95" alt="Summit Logo" />
 
           <div className="base-8">
@@ -108,7 +120,7 @@ function App() {
 
             <div className="base-4">
               <Typography styleOf="body-small">December 15th</Typography>
-              <Typography styleOf="body-small">Lehi, UT</Typography>
+              <Typography styleOf="body-small">Lehi, Utah</Typography>
             </div>
           </div>
 
