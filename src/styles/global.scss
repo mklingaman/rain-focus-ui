@@ -2,22 +2,16 @@
 @use 'mixins' as *;
 
 :root {
-  --text: #{$text};
-  --text-h: #{$text-h};
+  --text: #{$body-color};
+  --text-secondary: #{$body-secondary-color};
+  --header: #{$header-color};
   --bg: #{$bg};
   --border: #{$border};
-  --code-bg: #{$code-bg};
   --accent: #{$accent};
   --accent-bg: #{$accent-bg};
-  --accent-border: #{$accent-border};
-  --social-bg: #{$social-bg};
-  --shadow: #{$shadow};
-  --sans: #{$sans};
-  --heading: #{$heading};
-  --mono: #{$mono};
+  --button-color: #{$button-color};
+  --body: #{$font-family};
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -25,91 +19,256 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @include below {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #{$text-dark};
-    --text-h: #{$text-h-dark};
-    --bg: #{$bg-dark};
-    --border: #{$border-dark};
-    --code-bg: #{$code-bg-dark};
-    --accent: #{$accent-dark};
-    --accent-bg: #{$accent-bg-dark};
-    --accent-border: #{$accent-border-dark};
-    --social-bg: #{$social-bg-dark};
-    --shadow: #{$shadow-dark};
-  }
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --text: #{$text-dark};
+//     --header: #{$header-color};
+//     --text-h: #{$text-h-dark};
+//     --bg: #{$bg-dark};
+//     --border: #{$border-dark};
+//     --code-bg: #{$code-bg-dark};
+//     --accent: #{$accent-dark};
+//     --accent-bg: #{$accent-bg-dark};
+//     --accent-border: #{$accent-border-dark};
+//     --social-bg: #{$social-bg-dark};
+//     --shadow: #{$shadow-dark};
+//   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+//   #social .button-icon {
+//     filter: invert(1) brightness(2);
+//   }
+// }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+html,
+body {
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 body {
-  margin: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+html * {
+  box-sizing: border-box;
+}
+
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.center {
+  text-align: center;
+}
+
+p,
 h1,
-h2 {
-  font-family: var(--heading);
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--body);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.base-text-style {
+  font-family: var(--body);
+  color: var(--text);
+}
+
+.headline-one {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--header);
+}
+
+.headline-two {
+  font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-h);
+  color: var(--header);
+}
+.headline-three {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--header);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
+.headline-four {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--header);
+}
 
-  @include below {
-    font-size: 36px;
-    margin: 20px 0;
+.body-secondary {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.body {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.body-small {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.body-xsmall {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.card {
+  position: relative;
+  padding: 1.5rem 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border);
+}
+
+.card-link {
+  text-decoration: none;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
+.button {
+  border-style: none;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: var(--body);
+  color: var(--button-color);
+  background: var(--accent);
+  cursor: pointer;
+}
 
-  @include below {
-    font-size: 20px;
+.accordion {
+  width: 100%;
+}
+
+.accordion-trigger {
+  border-style: none;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: var(--body);
+  color: var(--text-secondary);
+  @media (hover: hover) {
+    &:hover:not([data-disabled]) {
+      background-color: var(--accent-bg);
+    }
+  }
+
+  &:focus-visible {
+    position: relative;
+    outline: 2px solid var(--accent);
+    z-index: 1;
+  }
+
+}
+
+[data-panel-open] {
+  background-color: var(--accent-bg);
+  color: var(--accent);
+
+  > .accordion-trigger-circle {
+    background-color: var(--accent);
   }
 }
 
-p {
-  margin: 0;
+.accordion-trigger-circle {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--text-secondary);
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.accordion-panel {
+  padding: 0.5rem 0.5rem 2rem 3rem;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.hr {
+  border: 1px solid var(--border);
+}
+
+.container {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.padding-default {
+  padding: 1.5rem;
+}
+
+.base-8>*+* {
+  margin-top: 0.5rem;
+}
+
+.base-16>*+* {
+  margin-top: 1rem;
+}
+
+.base-24>*+* {
+  margin-top: 1.5rem;
+}
+
+.base-32>*+* {
+  margin-top: 2rem;
+}
+
+.base-48>*+* {
+  margin-top: 3rem;
+}
+
+.base-52>*+* {
+  margin-top: 3.25rem;
+}
+
+.base-96>*+* {
+  margin-top: 6em;
 }
